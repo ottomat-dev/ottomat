@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ottomat</title>
+<title>Ottomat, Platforms, Automation & Consulting</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="ottomat helps MSPs and IT-driven businesses eliminate manual work, connect their platforms, and build automations that scale.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -119,14 +119,24 @@
 
 <nav>
   <div class="logo">ottomat<span>.io</span></div>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#who">Who we serve</a>
-    <a href="#why">Why ottomat</a>
-    <a href="#contact">Contact</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#who" onclick="closeMenu()">Who we serve</a>
+    <a href="#why" onclick="closeMenu()">Why ottomat</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
-  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+  <button class="nav-cta desktop-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#who" onclick="closeMenu()">Who we serve</a>
+  <a href="#why" onclick="closeMenu()">Why ottomat</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <button class="nav-cta" style="margin-top:8px;width:100%;" onclick="closeMenu();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+</div>
 
 <section class="hero">
   <div class="hero-bg"></div>
