@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ottomat, Platforms, Automation & Consulting</title>
+<meta name="description" content="ottomat helps MSPs and IT-driven businesses eliminate manual work, connect their platforms, and build automations that scale.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #EE4C14; --purple-dark: #4B2D8A; --navy: #00358A; --blue-mid: #1057C8;
+    --blue: #0F7FFF; --blue-light: #1E8FE8; --cyan: #00F5FF; --mint: #00FFCC;
+    --green-bright: #00FF85; --green: #00D966; --green-dark: #00C44F;
+    --bg: #060D24; --bg2: #071428;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); position: sticky; top: 0; background: rgba(4,13,26,0.92); backdrop-filter: blur(12px); z-index: 100; }
+  .logo { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: -0.5px; color: var(--mint); }
+  .logo span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 13px; letter-spacing: 0.05em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--mint); }
+  .nav-cta { background: var(--red); color: #fff; border: none; padding: 10px 22px; font-family: 'Inter', sans-serif; font-size: 13px; cursor: pointer; border-radius: 4px; }
+
+  .hero { padding: 80px 48px 0; position: relative; overflow: hidden; min-height: 500px; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(0,53,138,0.35) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(75,45,138,0.2) 0%, transparent 60%); pointer-events: none; }
+  .hero-inner { max-width: 580px; position: relative; padding-bottom: 80px; }
+  .hero-tag { display: inline-block; border: 1px solid var(--green); color: var(--green); font-size: 11px; letter-spacing: 0.15em; padding: 5px 12px; border-radius: 2px; margin-bottom: 28px; text-transform: uppercase; }
+  .hero h1 { font-family: 'Outfit', sans-serif; font-size: 52px; font-weight: 600; line-height: 1.0; letter-spacing: -2px; margin-bottom: 24px; }
+  .hero h1 .c1 { color: var(--cyan); }
+  .hero h1 .c2 { color: var(--mint); }
+  .hero p { color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.8; margin-bottom: 36px; }
+  .hero p span { color: var(--mint); }
+  .hero-btns { display: flex; gap: 14px; align-items: center; }
+  .btn-primary { background: var(--red); color: #fff; border: none; padding: 13px 30px; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer; border-radius: 4px; text-decoration: none; display: inline-block; }
+  .btn-secondary { background: transparent; color: var(--cyan); border: 1px solid var(--cyan); padding: 13px 30px; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer; border-radius: 4px; text-decoration: none; display: inline-block; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .stat { padding: 32px 48px; border-right: 1px solid rgba(255,255,255,0.06); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 6px; white-space: nowrap; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); letter-spacing: 0.08em; }
+  .s1 { color: var(--cyan); } .s2 { color: var(--green-bright); } .s3 { color: var(--blue); } .s4 { color: var(--mint); }
+
+  #services { padding: 80px 48px; }
+  .section-label { font-size: 11px; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 14px; }
+  .section-heading { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 600; margin-bottom: 44px; letter-spacing: -1px; }
+  .section-heading span { color: var(--cyan); }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .service-card { background: var(--bg2); padding: 36px; position: relative; transition: background 0.3s; }
+  .service-card:hover { background: #0a1e3a; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .sc1::before, .sc2::before, .sc3::before, .sc4::before, .sc5::before, .sc6::before { background: var(--blue); }
+  .service-icon { width: 36px; height: 36px; border-radius: 6px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .si1, .si2, .si3, .si4 { background: rgba(15,127,255,0.12); color: var(--blue); }
+  .service-card h3 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 500; margin-bottom: 10px; }
+  .service-card p { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.9; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+  .tag { font-size: 11px; padding: 4px 9px; border-radius: 2px; letter-spacing: 0.05em; }
+  .t-blue { border: 1px solid rgba(15,127,255,0.4); color: var(--blue); }
+  .t-cyan { border: 1px solid rgba(0,245,255,0.4); color: var(--cyan); }
+  .t-mint { border: 1px solid rgba(0,255,204,0.4); color: var(--mint); }
+  .t-green { border: 1px solid rgba(0,217,102,0.4); color: var(--green); }
+  .t-purple { border: 1px solid rgba(75,45,138,0.6); color: #a78fdc; }
+
+  #who { padding: 0 48px 80px; }
+  .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 44px; }
+  .who-card { background: var(--bg2); padding: 32px; border-bottom: 2px solid transparent; transition: background 0.3s; }
+  .wc1, .wc2, .wc3 { border-bottom-color: var(--cyan); }
+  .who-card:hover { background: #0a1e3a; }
+  .who-card h3 { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; margin-bottom: 10px; }
+  .who-card p { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.9; }
+
+  #why { padding: 80px 48px; background: linear-gradient(135deg, #0a0820 0%, var(--bg2) 100%); border-top: 1px solid rgba(75,45,138,0.3); border-bottom: 1px solid rgba(75,45,138,0.3); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 44px; }
+  .why-points { display: flex; flex-direction: column; gap: 26px; }
+  .why-point { display: flex; gap: 18px; align-items: flex-start; }
+  .why-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .why-point h4 { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; margin-bottom: 5px; }
+  .why-point p { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.8; }
+  .why-visual { background: var(--bg); border-radius: 8px; padding: 32px; border: 1px solid rgba(255,255,255,0.06); }
+  .why-visual-label { font-size: 11px; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 22px; }
+  .stack-item { display: flex; align-items: center; gap: 13px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: rgba(255,255,255,0.6); }
+  .stack-item:last-child { border-bottom: none; }
+  .stack-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  #contact { padding: 80px 48px; }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; margin-top: 44px; }
+  .contact-info h3 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 600; line-height: 1.2; margin-bottom: 18px; letter-spacing: -0.5px; }
+  .contact-info h3 span { color: var(--mint); }
+  .contact-info p { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.9; margin-bottom: 28px; }
+  .contact-detail { display: flex; align-items: center; gap: 11px; font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 11px; }
+  .contact-detail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .contact-form { display: flex; flex-direction: column; gap: 15px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-group label { font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+  .form-group input, .form-group select, .form-group textarea { background: var(--bg2); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; padding: 11px 15px; border-radius: 4px; outline: none; transition: border-color 0.2s; width: 100%; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--cyan); }
+  .form-group select { appearance: none; cursor: pointer; }
+  .form-group select option { background: #071428; }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit { background: var(--red); color: #fff; border: none; padding: 14px 30px; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer; border-radius: 4px; align-self: flex-start; margin-top: 4px; }
+  .form-note { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 4px; }
+  .success-msg { display: none; background: rgba(0,217,102,0.1); border: 1px solid rgba(0,217,102,0.3); color: var(--green); padding: 16px; border-radius: 4px; font-size: 13px; text-align: center; }
+
+  footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 12px; }
+  .footer-dots { display: flex; gap: 7px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">ottomat<span>.io</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#who">Who we serve</a>
+    <a href="#why">Why ottomat</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Platforms, Automation & Consulting</div>
+    <h1>Your tools should<br><span class="c1">work together.</span><br><span class="c2">We make that happen.</span></h1>
+    <p>ottomat helps MSPs and IT-driven businesses deploy, connect, and automate their platforms to streamline operations and scale.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Let's talk →</a>
+      <a href="#services" class="btn-secondary">See what we do</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num" style="color:var(--cyan)">15+</div><div class="stat-label">Years in IT & MSP</div></div>
+  <div class="stat"><div class="stat-num" style="color:var(--blue-mid)">End-to-end</div><div class="stat-label">From audit to deployment</div></div>
+  <div class="stat"><div class="stat-num" style="color:var(--blue-mid)">MSP-native</div><div class="stat-label">We know your stack</div></div>
+  <div class="stat"><div class="stat-num" style="color:var(--blue-mid)">AI-ready</div><div class="stat-label">When it makes sense</div></div>
+</div>
+
+<section id="services">
+  <div class="section-label">// what we do</div>
+  <div class="section-heading">Services built for<br><span>operational complexity</span></div>
+  <div class="services-grid">
+    <div class="service-card sc1">
+      <div class="service-icon si1">◈</div>
+      <h3>API Integrations</h3>
+      <p>Connect your platforms and eliminate the manual data entry in between. We design and build reliable API integrations between your ticketing, monitoring, RMM, CRM, and billing systems.</p>
+      <div class="service-tags">
+        <span class="tag t-blue">ServiceNow</span><span class="tag t-blue">Salesforce</span><span class="tag t-blue">Zendesk</span><span class="tag t-blue">Freshservice</span><span class="tag t-blue">Autotask</span><span class="tag t-blue">Custom APIs</span>
+      </div>
+    </div>
+    <div class="service-card sc2">
+      <div class="service-icon si2">⬡</div>
+      <h3>Workflow Automation</h3>
+      <p>Stop doing things by hand that a machine could handle. From alert routing, enrichment and correlation to ticket creation and client onboarding, we build automations that run while you sleep, including AI-assisted workflows where they add real value.</p>
+      <div class="service-tags">
+        <span class="tag t-cyan">Zapier</span><span class="tag t-cyan">Pipedream</span><span class="tag t-cyan">Custom Scripts</span><span class="tag t-purple">AI-assisted</span>
+      </div>
+    </div>
+    <div class="service-card sc3">
+      <div class="service-icon si3">◎</div>
+      <h3>Tooling Audits & Consulting</h3>
+      <p>Not sure if your current stack is working for or against you? We assess your platforms, identify gaps and redundancies, and give you a clear roadmap to a more efficient operation.</p>
+      <div class="service-tags">
+        <span class="tag t-cyan">Stack Review</span><span class="tag t-cyan">Gap Analysis</span><span class="tag t-cyan">Roadmapping</span>
+      </div>
+    </div>
+    <div class="service-card sc4">
+      <div class="service-icon si4">△</div>
+      <h3>Ongoing Retainers</h3>
+      <p>Automations need maintenance, expansion, and occasional rescue. We offer ongoing support to keep your integrations healthy and build on them as your business grows.</p>
+      <div class="service-tags">
+        <span class="tag t-cyan">Monthly Support</span><span class="tag t-cyan">Monitoring</span><span class="tag t-cyan">Iteration</span>
+      </div>
+    </div>
+    <div class="service-card sc1">
+      <div class="service-icon si1">⬢</div>
+      <h3>Platform Config & Buildout</h3>
+      <p>Standing up a new platform or inheriting a mess? We configure, build out, and optimize your tools from the ground up, whether it's a PSA, ticketing system, RMM, or monitoring platform.</p>
+      <div class="service-tags">
+        <span class="tag t-blue">PSA Setup</span><span class="tag t-blue">RMM Config</span><span class="tag t-blue">Ticketing</span><span class="tag t-blue">Monitoring</span>
+      </div>
+    </div>
+    <div class="service-card sc2">
+      <div class="service-icon si2">◉</div>
+      <h3>Knowledge Base & Documentation</h3>
+      <p>A good KB is one of the highest-ROI investments an MSP can make. We help build, organize, and maintain your knowledge base, and automate the parts that should never be done manually.</p>
+      <div class="service-tags">
+        <span class="tag t-cyan">KB Creation</span><span class="tag t-cyan">Documentation</span><span class="tag t-cyan">Automation</span><span class="tag t-cyan">Upkeep</span>
+      </div>
+    </div>
+    <div class="service-card sc1">
+      <div class="service-icon si1">◫</div>
+      <h3>Reporting & Data Analysis</h3>
+      <p>Raw data sitting in disconnected platforms is wasted potential. We build dashboards and automated reports that surface the insights your team actually needs, pulling from across your entire stack.</p>
+      <div class="service-tags">
+        <span class="tag t-blue">Power BI</span><span class="tag t-blue">Grafana</span><span class="tag t-blue">Custom Dashboards</span><span class="tag t-blue">Automated Reports</span>
+      </div>
+    </div>
+    <div class="service-card sc2">
+      <div class="service-icon si2">⊞</div>
+      <h3>Microsoft 365 Integrations</h3>
+      <p>The Microsoft ecosystem is everywhere in IT. We integrate Teams, SharePoint, Power Automate, and the rest of the M365 stack with your existing platforms so everything talks to everything.</p>
+      <div class="service-tags">
+        <span class="tag t-cyan">Teams</span><span class="tag t-cyan">Power Automate</span><span class="tag t-cyan">SharePoint</span><span class="tag t-cyan">Azure AD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="section-label">// who we serve</div>
+  <div class="section-heading">Built for IT.<br><span>Open to everyone.</span></div>
+  <div class="who-grid">
+    <div class="who-card wc1">
+      <h3>Managed Service Providers</h3>
+      <p>We speak your language. From PSA to RMM to NOC workflows, we understand the operational pressures MSPs face and build automations that actually fit how you work.</p>
+    </div>
+    <div class="who-card wc2">
+      <h3>IT Departments & Teams</h3>
+      <p>Internal IT teams drowning in manual processes and disconnected tools. We help you modernize your operations without a full platform overhaul.</p>
+    </div>
+    <div class="who-card wc3">
+      <h3>Any Business With Complex Ops</h3>
+      <p>If your business runs on multiple platforms that don't talk to each other, we can help, regardless of industry. Efficiency isn't exclusive to IT.</p>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-label">// why ottomat</div>
+  <div class="section-heading">Not a generalist.<br><span>A specialist.</span></div>
+  <div class="why-grid">
+    <div class="why-points">
+      <div class="why-point"><div class="why-dot" style="background:var(--cyan)"></div><div><h4>MSP experience from the inside</h4><p>Over 15 years working in and around MSPs, from the NOC floor to service delivery management. We know what breaks, why it breaks, and how to fix it for good.</p></div></div>
+      <div class="why-point"><div class="why-dot" style="background:var(--cyan)"></div><div><h4>Technical and operational fluency</h4><p>We bridge the gap between the technical side and the business side. We can talk to your techs and your leadership, and translate between them.</p></div></div>
+      <div class="why-point"><div class="why-dot" style="background:var(--cyan)"></div><div><h4>AI in the toolkit, not the pitch</h4><p>We use AI where it genuinely improves outcomes, smarter automations, faster analysis, better integrations. Not as a buzzword. A practical tool that gets results.</p></div></div>
+      <div class="why-point"><div class="why-dot" style="background:var(--cyan)"></div><div><h4>No bloated engagements</h4><p>No unnecessary discovery phases or inflated project scopes. We move fast, communicate clearly, and deliver work you can actually use.</p></div></div>
+      <div class="why-point"><div class="why-dot" style="background:var(--cyan)"></div><div><h4>We know your stack already</h4><p>ServiceNow, Salesforce, Autotask, NinjaRMM, Zapier, Power Automate and more. No ramp-up period needed to understand your tools.</p></div></div>
+    </div>
+    <div class="why-visual">
+      <div class="why-visual-label">// platforms we work with</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--blue)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Ticketing</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--blue)"></div>ServiceNow, Salesforce, Zoho, Zendesk</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--blue)"></div>Freshservice, Autotask</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--cyan)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Monitoring, Alerting & Correlation</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--cyan)"></div>SolarWinds, PRTG, Zabbix</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--cyan)"></div>Alert enrichment, noise reduction & correlation</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--mint)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">RMM</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--mint)"></div>NinjaRMM, Atera, ScreenConnect</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--green)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">CRM / Billing</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--green)"></div>Salesforce, ServiceNow, Freshservice, Rev.io</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--green)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">CMDB & Asset Management</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--green)"></div>ServiceNow CMDB</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--green-dark)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Documentation</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--green-dark)"></div>IT Glue, Hudu, Confluence</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--blue-light)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Microsoft 365</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--blue-light)"></div>Teams, SharePoint, Power Automate, Power Apps</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--blue-light)"></div>Azure AD / Entra ID, Outlook automation</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--blue-mid)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Call Center / PBX</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--blue-mid)"></div>RingCentral, 8x8, Zoom Phone, Vonage</div>
+      <div class="stack-item"><div class="stack-dot" style="background:var(--green-bright)"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Automation Platforms</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:var(--green-bright)"></div>Zapier, Pipedream, Custom APIs &amp; Scripts</div>
+      <div class="stack-item"><div class="stack-dot" style="background:#a78fdc"></div><strong style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">AI & LLM</strong></div>
+      <div class="stack-item" style="padding-top:4px"><div class="stack-dot" style="background:#a78fdc"></div>AI tools &amp; LLM integrations</div>
+      <div class="stack-item"><div class="stack-dot" style="background:rgba(255,255,255,0.2)"></div><span style="color:rgba(255,255,255,0.4);font-style:italic;">Don't see your platform? <a href="#contact" style="color:var(--red);text-decoration:none;">Let's talk.</a></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">// get in touch</div>
+  <div class="section-heading">Tell us what<br><span>you're working with.</span></div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Let's figure out what <span>ottomat</span> can do for you.</h3>
+      <p>Fill out the form and we'll get back to you as soon as possible. No sales pressure, just a straightforward conversation about what you need.</p>
+      <div class="contact-detail"><div class="contact-detail-dot"></div>Free initial consultation</div>
+      <div class="contact-detail"><div class="contact-detail-dot"></div>No long-term contracts required</div>
+    </div>
+    <div>
+      <div id="successMsg" class="success-msg">Thanks! We'll be in touch within one business day.</div>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xwvajbzz" method="POST">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required /></div>
+          <div class="form-group"><label>Company</label><input type="text" name="company" placeholder="Company name" /></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="you@company.com" required /></div>
+        <div class="form-group">
+          <label>What are you looking for?</label>
+          <select name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option>API Integration</option>
+            <option>Workflow Automation</option>
+            <option>AI-Assisted Automation</option>
+            <option>Platform Configuration & Buildout</option>
+            <option>Platform Administration & Management</option>
+            <option>Reporting & Data Analytics</option>
+            <option>Microsoft 365 Integration</option>
+            <option>Knowledge Base & Documentation</option>
+            <option>Tooling Audit / Consulting</option>
+            <option>Not sure / General inquiry</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell us a bit more</label><textarea name="message" placeholder="Briefly describe what you're trying to solve or automate..."></textarea></div>
+        <button type="submit" class="form-submit">Send message →</button>
+        <p class="form-note">We'll never share your info or add you to a mailing list.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 ottomat.io, all rights reserved</span>
+  <div class="footer-dots">
+    <div class="dot" style="background:#EE4C14"></div><div class="dot" style="background:#4B2D8A"></div><div class="dot" style="background:#00358A"></div><div class="dot" style="background:#1057C8"></div><div class="dot" style="background:#0F7FFF"></div><div class="dot" style="background:#1E8FE8"></div><div class="dot" style="background:#00F5FF"></div><div class="dot" style="background:#00FFCC"></div><div class="dot" style="background:#00FF85"></div><div class="dot" style="background:#00D966"></div><div class="dot" style="background:#00C44F"></div>
+  </div>
+</footer>
+
+
+</body>
+</html>
